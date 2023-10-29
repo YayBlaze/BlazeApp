@@ -2,16 +2,18 @@
 
 <script>
     let insultlist = [
-        "",
+        "I've meet pigs better at fighting then you.",
+        "My great deeds are talked about across the land!",
+        "I'm the greatest fighter on the seas!",
     ]
 </script>
 
 
-<nav id="nav">
+<nav id="nav" class="hi">
     <p>Insult Fight Game</p>
     <a href="/">Back</a>
 </nav>
-
+ 
 <body id="body">
     <h2>Welcome to</h2>
     <h1>Insult Fight Game</h1>
