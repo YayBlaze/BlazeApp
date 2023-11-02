@@ -33,18 +33,43 @@
     let current2:string[] = []
     let current3:string[] = []
     function resetrng() {
+        current1 = []
+        current2 = []
+        current3 = []
+        let insultlist = [
+            "I've meet pigs better at fighting then you.",
+            "My great deeds are talked about across the land!",
+            "I'm the greatest fighter on the seas!",
+            "Out of breath already?",
+            "Your mother.",
+            "No one has ever faced me and lived!"
+        ]
+        let retortlsit = [
+            "Glad to hear you're still in touch with your parents",
+            "Well, everyones loves a good joke.",
+            "Too bad you're facing me on dry land.",
+            "Only from laughing at you!",
+            "Your father",
+            "With that bad breath, I'm not suprised."
+        ]
         for (let i = 0; i < 4; i++) {
-           let idx = Math.floor(Math.random() * 8)
+           let idx = Math.floor(Math.random() * insultlist.length)
            let insult = insultlist[idx]
            let retort = retortlsit[idx]
            if (i == 0) {
             current1.push(insult, retort)
+            insultlist.splice(idx,1)
+            retortlsit.splice(idx,1)
            }
            else if (i == 1) {
             current2.push(insult, retort)
+            insultlist.splice(idx,1)
+            retortlsit.splice(idx,1)
            }
            else if (i == 2) {
             current3.push(insult, retort)
+            insultlist.splice(idx,1)
+            retortlsit.splice(idx,1)
            }
         }
         console.log(current1)
