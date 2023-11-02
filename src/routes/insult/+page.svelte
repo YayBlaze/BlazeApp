@@ -25,8 +25,9 @@
         "The Magic Man",
         "Dan the Library Man",
         "Your mother",
-        "Blaze Annison Himselfe",
-        "Mr. Develepor"
+        "Blaze Annison",
+        "Mr. Develepor",
+        "Charlie - The Minecraft Nerd"
     ]
     let current1:string[] = []
     let current2:string[] = []
