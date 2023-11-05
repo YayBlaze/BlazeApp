@@ -1,9 +1,9 @@
+5:35
 <title>Insult Fight - blazeannison</title>
 
 <script lang="ts">
-    import { build } from "vite";
 
-    let insultlist = [
+    let insultlist:string[] = [
         "I've meet pigs better at fighting then you.",
         "My great deeds are talked about across the land!",
         "I'm the greatest fighter on the seas!",
@@ -11,7 +11,7 @@
         "Your mother.",
         "No one has ever faced me and lived!"
     ]
-    let retortlsit = [
+    let retortlsit:string[] = [
         "Glad to hear you're still in touch with your parents",
         "Well, everyones loves a good joke.",
         "Too bad you're facing me on dry land.",
@@ -40,7 +40,7 @@
         current2 = []
         current3 = []
         name = ""
-        let insultlist = [
+        insultlist = [
             "I've meet pigs better at fighting then you.",
             "My great deeds are talked about across the land!",
             "I'm the greatest fighter on the seas!",
@@ -48,7 +48,7 @@
             "Your mother.",
             "No one has ever faced me and lived!"
         ]
-        let retortlsit = [
+        retortlsit = [
             "Glad to hear you're still in touch with your parents",
             "Well, everyones loves a good joke.",
             "Too bad you're facing me on dry land.",
@@ -87,7 +87,7 @@
     function playbutton() {
         play = true
     }
-    if (play = true) {
+    if (play) {
         resetrng
     }
 </script>
@@ -97,16 +97,16 @@
     <p>Insult Fight Game</p>
     <a href="/">Back</a>
 </nav>
- 
-<body id="body">
+
+<body>
     <h2>Welcome to</h2>
     <h1>Insult Fight Game</h1>
-    {#if play = true}
+    {#if play}
         <img src="https://cdnb.artstation.com/p/assets/images/images/053/188/547/original/matthew-mai-sword-fight-study.gif?1661627203" alt="" id="fightingimg">
     {:else}
         <button on:click={playbutton}>Play!</button>
     {/if}
-    </body>
+</body>
 
 
 <style>
@@ -119,7 +119,7 @@
         flex-direction: row;
     }
 
-    #body {
+    body {
         background-color: black;
         color: white;
     }
