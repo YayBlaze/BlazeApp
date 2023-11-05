@@ -1,6 +1,8 @@
 <title>Insult Fight - blazeannison</title>
 
 <script lang="ts">
+    import { build } from "vite";
+
     let insultlist = [
         "I've meet pigs better at fighting then you.",
         "My great deeds are talked about across the land!",
@@ -32,10 +34,12 @@
     let current1:string[] = []
     let current2:string[] = []
     let current3:string[] = []
+    let name = ""
     function resetrng() {
         current1 = []
         current2 = []
         current3 = []
+        name = ""
         let insultlist = [
             "I've meet pigs better at fighting then you.",
             "My great deeds are talked about across the land!",
@@ -75,6 +79,16 @@
         console.log(current1)
         console.log(current2)
         console.log(current3)
+        let idx2 = Math.floor(Math.random() * names.length)
+        name = names[idx2]
+        console.log(name)
+    }
+    var play = false
+    function playbutton() {
+        play = true
+    }
+    if (play = true) {
+        resetrng
     }
 </script>
 
@@ -87,8 +101,12 @@
 <body id="body">
     <h2>Welcome to</h2>
     <h1>Insult Fight Game</h1>
-    <button on:click={resetrng}>Button</button>
-</body>
+    {#if play = true}
+        <img src="https://cdnb.artstation.com/p/assets/images/images/053/188/547/original/matthew-mai-sword-fight-study.gif?1661627203" alt="" id="fightingimg">
+    {:else}
+        <button on:click={playbutton}>Play!</button>
+    {/if}
+    </body>
 
 
 <style>
@@ -104,5 +122,9 @@
     #body {
         background-color: black;
         color: white;
+    }
+    button {
+        border: 1px solid goldenrod;
+        padding: 2%;
     }
 </style>
