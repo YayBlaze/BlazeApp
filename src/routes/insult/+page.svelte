@@ -1,4 +1,3 @@
-5:35
 <title>Insult Fight - blazeannison</title>
 
 <script lang="ts">
