@@ -85,6 +85,7 @@ function generate() {
         background-color: black;
         padding: 10px;
         width: fit-content;
+        font-size: xx-large;
     }
     #parrot {
         background-color: white;
@@ -95,5 +96,8 @@ function generate() {
     #body {
         display: flex;
         flex-direction: row;
+        position: absolute;
+        left: 40%;
+        top: 45%;
     }
 </style>

@@ -88,7 +88,7 @@
     function attackation() {
         let rng = Math.floor(Math.random() * 10)
         console.log(rng)
-        if (rng <= 2) {
+        if (rng <= 4.5) {
             health -= 2
             ophealth -= 1
         }
@@ -124,12 +124,20 @@
         </div>
         <div id="storybox">
             {#if (insulttoggle == false)}
-                <p>Would you like to</p>
-                <div style="display: flex;">
-                    <button class="choice" on:click={attackation}>Attack</button>
-                    <p>or</p>
-                    <button class="choice" on:click={insultaction}>Insult</button>
-                </div>
+                {#if health > 0}
+                    {#if ophealth > 0}
+                        <p>Would you like to</p>
+                        <div style="display: flex;">
+                            <button class="choice" on:click={attackation}>Attack</button>
+                            <p>or</p>
+                            <button class="choice" on:click={insultaction}>Insult</button>
+                        </div>
+                    {:else}
+                        <h1 style="color: greenyellow;"><strong>You Win!</strong></h1>
+                    {/if}
+                {:else}
+                    <h1 style="color: red;"><strong>You Lose!</strong></h1>
+                {/if}
             {:else}
                 <p>Choose your insult:</p>
                 <div class="flexcolumn">
@@ -165,6 +173,12 @@
         padding: 1%;
         background-color: black;
         color: white;
+        border-radius: 5px;
+        transition: all 500ms; 
+    }
+    #plybutton:hover {
+        background-color: goldenrod;
+        color: black;
     }
     #stats {
         display: flex;
@@ -196,8 +210,14 @@
         width: fit-content;
         padding: 1%;
         background-color: black;
-        border: 1px solid white;
+        border: 1px solid goldenrod;
+        border-radius: 5px;
         color: white;
+        transition: all 500ms;
+    }
+    .choice:hover {
+        background-color: goldenrod;
+        color: black;
     }
     #insultchoice {
         border: 1px solid goldenrod;
@@ -206,6 +226,7 @@
         border-radius: 5px;
         width: fit-content;
         height: fit-content;
+        transition: all 500ms;
     }
     #insultchoice:hover {
         border-radius: 5px;
