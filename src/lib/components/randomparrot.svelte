@@ -76,7 +76,7 @@ function generate() {
 </script>
 <body id="body">
     <button on:click={generate} id="generatebutton">Generate</button>
-    <img src="{randomElement}" alt="" id="parrot">
+    <img src="{randomElement}" alt="pretend this is a party parrot" id="parrot">
 </body>
 <style>
     #generatebutton {

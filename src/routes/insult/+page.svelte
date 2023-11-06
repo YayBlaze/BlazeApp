@@ -1,7 +1,9 @@
 <title>Insult Fight - blazeannison</title>
 
 <script lang="ts">
-
+    var play:boolean = false
+    var health = 20
+    var ophealth = 20
     let insultlist:string[] = [
         "I've meet pigs better at fighting then you.",
         "My great deeds are talked about across the land!",
@@ -18,7 +20,7 @@
         "Your father",
         "With that bad breath, I'm not suprised."
     ]
-    let names = [
+    let names:string[] = [
         "Tate the Great",
         "Rexydoodles",
         "Sword Loard Joe",
@@ -30,11 +32,12 @@
         "Mr. Develepor",
         "Charlie - The Minecraft Nerd"
     ]
-    let current1:string[] = []
-    let current2:string[] = []
-    let current3:string[] = []
-    let name = ""
+    var current1:string[] = []
+    var current2:string[] = []
+    var current3:string[] = []
+    var name = ""
     function resetrng() {
+        play = true
         current1 = []
         current2 = []
         current3 = []
@@ -82,13 +85,6 @@
         name = names[idx2]
         console.log(name)
     }
-    var play = false
-    function playbutton() {
-        play = true
-    }
-    if (play) {
-        resetrng
-    }
 </script>
 
 
@@ -101,9 +97,17 @@
     <h2>Welcome to</h2>
     <h1>Insult Fight Game</h1>
     {#if play}
-        <img src="https://cdnb.artstation.com/p/assets/images/images/053/188/547/original/matthew-mai-sword-fight-study.gif?1661627203" alt="" id="fightingimg">
+        <div style="display: flex;">
+            <div>
+                <p>Your Oponent: {name}</p>
+                <p>Your Oponent's Health: {ophealth}</p>
+            </div>
+            <div id="YoureStats">
+                <p>Your Health: {health}</p>
+            </div>
+        </div>
     {:else}
-        <button on:click={playbutton}>Play!</button>
+        <button on:click={resetrng}>Play!</button>
     {/if}
 </body>
 
@@ -125,5 +129,10 @@
     button {
         border: 1px solid goldenrod;
         padding: 2%;
+    }
+    #YoureStats {
+        text-align: right;
+        position: absolute;
+        right: 50%;
     }
 </style>
