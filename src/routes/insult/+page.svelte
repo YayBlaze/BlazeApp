@@ -4,7 +4,7 @@
     var play:boolean = false
     var health = 20
     var ophealth = 20
-    let insultlist:string[] = [
+    var insultlist:string[] = [
         "I've meet pigs better at fighting then you.",
         "My great deeds are talked about across the land!",
         "I'm the greatest fighter on the seas!",
@@ -12,7 +12,7 @@
         "Your mother.",
         "No one has ever faced me and lived!"
     ]
-    let retortlsit:string[] = [
+    var retortlsit:string[] = [
         "Glad to hear you're still in touch with your parents",
         "Well, everyones loves a good joke.",
         "Too bad you're facing me on dry land.",
@@ -20,7 +20,7 @@
         "Your father",
         "With that bad breath, I'm not suprised."
     ]
-    let names:string[] = [
+    var names:string[] = [
         "Tate the Great",
         "Rexydoodles",
         "Sword Loard Joe",
@@ -85,6 +85,22 @@
         name = names[idx2]
         console.log(name)
     }
+    function attackation() {
+        let rng = Math.floor(Math.random() * 10)
+        console.log(rng)
+        if (rng <= 2) {
+            health -= 2
+            ophealth -= 1
+        }
+        else {
+            health -= 1
+            ophealth -= 2
+        }
+    }
+    var insulttoggle:boolean = false
+    function insultaction() {
+        insulttoggle = true
+    }
 </script>
 
 
@@ -107,10 +123,24 @@
             </div>
         </div>
         <div id="storybox">
-            <p>Time to fight!</p>
+            {#if (insulttoggle == false)}
+                <p>Would you like to</p>
+                <div style="display: flex;">
+                    <button class="choice" on:click={attackation}>Attack</button>
+                    <p>or</p>
+                    <button class="choice" on:click={insultaction}>Insult</button>
+                </div>
+            {:else}
+                <p>Choose your insult:</p>
+                <div class="flexcolumn">
+                    {#each insultlist as insult}
+                        <button id="insultchoice">{insult}</button>
+                    {/each}
+                </div>
+            {/if}
         </div>
     {:else}
-        <button on:click={resetrng}>Play!</button>
+        <button on:click={resetrng} id="plybutton">Play!</button>
     {/if}
 </body>
 
@@ -130,9 +160,11 @@
         background-color: black;
         color: white;
     }
-    button {
+    #plybutton {
         border: 1px solid goldenrod;
-        padding: 2%;
+        padding: 1%;
+        background-color: black;
+        color: white;
     }
     #stats {
         display: flex;
@@ -158,5 +190,31 @@
         height: fit-content;
         position: absolute;
         top: 45%;
+    }
+    .choice {
+        height: fit-content;
+        width: fit-content;
+        padding: 1%;
+        background-color: black;
+        border: 1px solid white;
+        color: white;
+    }
+    #insultchoice {
+        border: 1px solid goldenrod;
+        background-color: black;
+        color: white;
+        border-radius: 5px;
+        width: fit-content;
+        height: fit-content;
+    }
+    #insultchoice:hover {
+        border-radius: 5px;
+        background-color: goldenrod;
+        color: black;
+    }
+    .flexcolumn {
+        display: flex;
+        flex-direction: column;
+        height: fit-content;
     }
 </style>
