@@ -97,14 +97,17 @@
     <h2>Welcome to</h2>
     <h1>Insult Fight Game</h1>
     {#if play}
-        <div style="display: flex;">
+        <div id="stats">
             <div>
-                <p>Your Oponent: {name}</p>
-                <p>Your Oponent's Health: {ophealth}</p>
+                <p><b>Your Oponent: </b>{name}</p>
+                <p><b>Your Oponent's Health: </b>{ophealth}</p>
             </div>
             <div id="YoureStats">
-                <p>Your Health: {health}</p>
+                <p><b>Your Health: </b>{health}</p>
             </div>
+        </div>
+        <div id="storybox">
+            <p>Time to fight!</p>
         </div>
     {:else}
         <button on:click={resetrng}>Play!</button>
@@ -120,6 +123,7 @@
         padding: 10px 100% 10px 10px;
         display: flex;
         flex-direction: row;
+        border-radius: 5px;
     }
 
     body {
@@ -130,9 +134,29 @@
         border: 1px solid goldenrod;
         padding: 2%;
     }
+    #stats {
+        display: flex;
+        flex-direction: row;
+        background-color: dimgray;
+        border: 2px solid grey;
+        padding: 1%;
+        border-radius: 12px;
+        color: black;
+    }
     #YoureStats {
         text-align: right;
         position: absolute;
         right: 50%;
+    }
+    #storybox {
+        color: black;
+        background-color: dimgray;
+        border: 2px solid grey;
+        border-radius: 12px;
+        padding: 1%;
+        width: 100%;
+        height: fit-content;
+        position: absolute;
+        top: 45%;
     }
 </style>
