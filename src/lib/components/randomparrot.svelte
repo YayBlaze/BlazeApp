@@ -81,11 +81,16 @@ function generate() {
 <style>
     #generatebutton {
         border: 2px solid goldenrod;
-        color: white;
+        color: goldenrod;
         background-color: black;
         padding: 10px;
         width: fit-content;
         font-size: xx-large;
+        transition: 500ms;
+    }
+    #generatebutton:hover {
+        background-color: goldenrod;
+        color: black;
     }
     #parrot {
         background-color: white;
