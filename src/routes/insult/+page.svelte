@@ -1,9 +1,11 @@
 <title>Insult Fight - blazeannison</title>
 
 <script lang="ts">
+    import Insultstorybox from "$lib/components/insultstorybox.svelte";
     var play:boolean = false
     var health = 20
     var ophealth = 20
+    var choseninsult:string = ""
     var insultlist:string[] = [
         "I've meet pigs better at fighting then you.",
         "My great deeds are talked about across the land!",
@@ -42,22 +44,6 @@
         current2 = []
         current3 = []
         name = ""
-        insultlist = [
-            "I've meet pigs better at fighting then you.",
-            "My great deeds are talked about across the land!",
-            "I'm the greatest fighter on the seas!",
-            "Out of breath already?",
-            "Your mother.",
-            "No one has ever faced me and lived!"
-        ]
-        retortlsit = [
-            "Glad to hear you're still in touch with your parents",
-            "Well, everyones loves a good joke.",
-            "Too bad you're facing me on dry land.",
-            "Only from laughing at you!",
-            "Your father",
-            "With that bad breath, I'm not suprised."
-        ]
         for (let i = 0; i < 4; i++) {
            let idx = Math.floor(Math.random() * insultlist.length)
            let insult = insultlist[idx]
@@ -78,6 +64,22 @@
             retortlsit.splice(idx,1)
            }
         }
+        insultlist = [
+            "I've meet pigs better at fighting then you.",
+            "My great deeds are talked about across the land!",
+            "I'm the greatest fighter on the seas!",
+            "Out of breath already?",
+            "Your mother.",
+            "No one has ever faced me and lived!"
+        ]
+        retortlsit = [
+            "Glad to hear you're still in touch with your parents",
+            "Well, everyones loves a good joke.",
+            "Too bad you're facing me on dry land.",
+            "Only from laughing at you!",
+            "Your father",
+            "With that bad breath, I'm not suprised."
+        ]
         console.log(current1)
         console.log(current2)
         console.log(current3)
@@ -101,6 +103,10 @@
     function insultaction() {
         insulttoggle = true
     }
+    function chooseinsult(insultclicked:string) {
+        choseninsult = insultclicked
+    }
+    
 </script>
 
 
@@ -122,31 +128,32 @@
                 <p><b>Your Health: </b>{health}</p>
             </div>
         </div>
-        <div id="storybox">
+        <div id="choicebox">
             {#if (insulttoggle == false)}
                 {#if health > 0}
                     {#if ophealth > 0}
-                        <p>Would you like to</p>
+                           <p>Would you like to</p>
                         <div style="display: flex;">
                             <button class="choice" on:click={attackation}>Attack</button>
                             <p>or</p>
                             <button class="choice" on:click={insultaction}>Insult</button>
                         </div>
-                    {:else}
+                       {:else}
                         <h1 style="color: greenyellow;"><strong>You Win!</strong></h1>
                     {/if}
                 {:else}
                     <h1 style="color: red;"><strong>You Lose!</strong></h1>
                 {/if}
-            {:else}
+                {:else}
                 <p>Choose your insult:</p>
                 <div class="flexcolumn">
                     {#each insultlist as insult}
-                        <button id="insultchoice">{insult}</button>
+                        <button id="insultchoice" on:click={chooseinsult(insult)}>{insult}</button>
                     {/each}
                 </div>
             {/if}
         </div>
+            <Insultstorybox choseninsult={choseninsult} current1={current1} current2={current2} current3={current3} name={name} health={health} ophealth={ophealth}></Insultstorybox>
     {:else}
         <button on:click={resetrng} id="plybutton">Play!</button>
     {/if}
@@ -194,13 +201,13 @@
         position: absolute;
         right: 50%;
     }
-    #storybox {
+    #choicebox {
         color: black;
         background-color: dimgray;
         border: 2px solid grey;
         border-radius: 12px;
         padding: 1%;
-        width: 100%;
+        width: fit-content;
         height: fit-content;
         position: absolute;
         top: 45%;
