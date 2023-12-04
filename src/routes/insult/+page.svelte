@@ -90,7 +90,7 @@
     function attackation() {
         let rng = Math.floor(Math.random() * 10)
         console.log(rng)
-        if (rng <= 4.5) {
+        if (rng <= 5) {
             health -= 2
             ophealth -= 1
         }
@@ -106,7 +106,11 @@
     function chooseinsult(insultclicked:string) {
         choseninsult = insultclicked
     }
-    
+    function reset() {
+        play = false
+        health = 20
+        ophealth = 20
+    }
 </script>
 
 
@@ -140,9 +144,11 @@
                         </div>
                        {:else}
                         <h1 style="color: greenyellow;"><strong>You Win!</strong></h1>
+                        <button id="greenbutton" on:click={reset}>Ok</button>
                     {/if}
                 {:else}
                     <h1 style="color: red;"><strong>You Lose!</strong></h1>
+                    <button id="redbutton" on:click={reset}>Ok</button>
                 {/if}
                 {:else}
                 <p>Choose your insult:</p>
@@ -153,7 +159,7 @@
                 </div>
             {/if}
         </div>
-            <Insultstorybox choseninsult={choseninsult} current1={current1} current2={current2} current3={current3} name={name} health={health} ophealth={ophealth}></Insultstorybox>
+        <Insultstorybox choseninsult={choseninsult} current1={current1} current2={current2} current3={current3} name={name} health={health} ophealth={ophealth}></Insultstorybox>
     {:else}
         <button on:click={resetrng} id="plybutton">Play!</button>
     {/if}
@@ -207,7 +213,7 @@
         border: 2px solid grey;
         border-radius: 12px;
         padding: 1%;
-        width: fit-content;
+        width: 95%;
         height: fit-content;
         position: absolute;
         top: 45%;
@@ -244,5 +250,29 @@
         display: flex;
         flex-direction: column;
         height: fit-content;
+    }
+    #redbutton {
+        color: red;
+        background-color: black;
+        border: 1px solid red;
+        border-radius: 5px;
+        padding: 1%;
+        transition: 200ms;
+    }
+    #redbutton:hover {
+        background-color: red;
+        color: black;
+    }
+    #greenbutton {
+        color: greenyellow;
+        background-color: black;
+        border: 1px solid greenyellow;
+        border-radius: 5px;
+        padding: 1%;
+        transition: 200ms;
+    }
+    #greenbutton:hover {
+        background-color: greenyellow;
+        color: black;
     }
 </style>

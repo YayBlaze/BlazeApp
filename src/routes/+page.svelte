@@ -67,7 +67,7 @@
         width: fit-content;
         height: fit-content;
         color: cornflowerblue;
-        transition: 500ms;
+        transition: 100ms;
     }
     .gamesddcontent a:hover{
         background-color: cornflowerblue;
@@ -75,8 +75,10 @@
     }
     .gamesddbtn:hover {
         background-color: dimgray;
+        color: cornflowerblue;
     }
     #gamesdropdown:hover .gamesddcontent {
         display: block;
+        color: cornflowerblue;
     }
 </style>
